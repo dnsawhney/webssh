@@ -722,6 +722,7 @@ jQuery(function($){
         complete: ajax_complete_callback
     });
 
+    console.log(result);
     return result;
   }
 
@@ -814,11 +815,11 @@ jQuery(function($){
     );
   }
 
-  function call_connect(port) {
+  /*function call_connect(port) {
     console.log('port')
     wssh.connect("localhost", port, "dns", "Um9ja2luZ0A5OQ==", "", "", "");
     // e.preventDefault();   // if you want to not go to href url uncoment this
-}
+}*/
 
 
   parse_url_data(
