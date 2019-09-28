@@ -7,6 +7,7 @@ import traceback
 import weakref
 import paramiko
 import tornado.web
+import pprint
 
 from concurrent.futures import ThreadPoolExecutor
 from tornado.ioloop import IOLoop
@@ -488,7 +489,7 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
             workers[worker.id] = worker
             self.loop.call_later(DELAY, recycle_worker, worker)
             self.result.update(id=worker.id, encoding=worker.encoding)
-
+        pprint.pprint(self.result)
         self.write(self.result)
 
 
