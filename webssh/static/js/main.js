@@ -544,6 +544,15 @@ jQuery(function($){
       state = DISCONNECTED;
       default_title = 'WebSSH';
       title_element.text = default_title;
+      console.log('new session');
+      $.ajax({
+        url: "/",
+        type: 'GET',
+        success: function(res) {
+            console.log(res);
+            //alert(res);
+        }
+      });
     };
 
     $(window).resize(function(){
