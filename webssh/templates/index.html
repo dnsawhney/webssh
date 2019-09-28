@@ -83,6 +83,12 @@
         
         <button type="submit" class="btn btn-primary">Connect</button>
         <button type="reset" class="btn btn-danger">Reset</button>-->
+        {% for i in list %}
+
+      <!--<a href="/?hostname=localhost&port={{ i }}&username=dns&password=Um9ja2luZ0A5OQ==">{{i}}</a>-->
+      VDC On Port = <a href="" onclick="call_connect({{i}})">{{i}}</a>
+
+    {% end %}
         <input type="hidden" id="term" name="term" value="xterm-256color">
         {% module xsrf_form_html() %}
       </form>
@@ -90,12 +96,7 @@
       
     </div>
 
-    {% for i in list %}
-
-      <!--<a href="/?hostname=localhost&port={{ i }}&username=dns&password=Um9ja2luZ0A5OQ==">{{i}}</a>-->
-      VDC On Port = <a href="" onclick="call_connect({{i}})">{{i}}</a>
-
-    {% end %}
+    
     
 
     <div class="container">
