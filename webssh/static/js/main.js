@@ -700,7 +700,8 @@ jQuery(function($){
         url = data.url || form.action,
         _xsrf = form.querySelector('input[name="_xsrf"]');
 
-    var result = validate_form_data(wrap_object(data));
+    //var result = validate_form_data(wrap_object(data));
+    var result = validate_form_data(data);
     if (!result.valid) {
       log_status(result.errors.join('\n'));
       return;
@@ -721,7 +722,6 @@ jQuery(function($){
         data: data,
         complete: ajax_complete_callback,
         cache: false,
-        contentType: false,
         processData: false
     });
 
