@@ -818,11 +818,17 @@ jQuery(function($){
     );
   }
 
-  /*function call_connect(port) {
+  function call_connect(port) {
     console.log('port')
-    wssh.connect("localhost", port, "dns", "Um9ja2luZ0A5OQ==", "", "", "");
+    //wssh.connect("localhost", port, "dns", "Um9ja2luZ0A5OQ==", "", "", "");
     // e.preventDefault();   // if you want to not go to href url uncoment this
-}*/
+    var string= 'hostname=localhost&username=dns&password=Um9ja2luZ0A5OQ==&port=' +port.toString() ;
+    parse_url_data(string,
+      form_keys, opts_keys, url_form_data, url_opts_data
+    );
+    waiter.show();
+      connect(url_form_data);
+}
 
 
   parse_url_data(
