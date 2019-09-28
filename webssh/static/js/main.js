@@ -719,9 +719,7 @@ jQuery(function($){
         url: url,
         type: 'post',
         data: data,
-        complete: ajax_complete_callback,
-        cache: false,
-        processData: false
+        complete: ajax_complete_callback
     });
 
     
