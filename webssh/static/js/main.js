@@ -772,6 +772,7 @@ jQuery(function($){
 
   wssh.connect = connect;
 
+
   $(form_id).submit(function(event){
     event.preventDefault();
     connect();
@@ -836,6 +837,8 @@ jQuery(function($){
     decode_uri(window.location.search.substring(1)) + '&' + decode_uri(window.location.hash.substring(1)),
     form_keys, opts_keys, url_form_data, url_opts_data
   );
+
+  wssh.parse = parse_url_data;
    console.log(url_form_data);
    //console.log(url_opts_data);
 
