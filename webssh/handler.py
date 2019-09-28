@@ -29,7 +29,7 @@ except ImportError:
     from urlparse import urlparse
 
 
-DELAY = 3
+DELAY = 5
 DEFAULT_PORT = 22
 
 swallow_http_errors = True
