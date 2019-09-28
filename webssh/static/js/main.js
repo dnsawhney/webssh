@@ -719,10 +719,16 @@ jQuery(function($){
         url: url,
         type: 'post',
         data: data,
-        complete: ajax_complete_callback
+        complete: ajax_complete_callback,
+        cache: false,
+        contentType: false,
+        processData: false
     });
 
+    
+
     console.log(result);
+    console.log(data);
     return result;
   }
 
