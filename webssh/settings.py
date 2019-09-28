@@ -23,14 +23,14 @@ define('ssladdress', default='', help='SSL listen address')
 define('sslport', type=int, default=4433,  help='SSL listen port')
 define('certfile', default='', help='SSL certificate file')
 define('keyfile', default='', help='SSL private key file')
-define('debug', type=bool, default=False, help='Debug mode')
-define('policy', default='warning',
+define('debug', type=bool, default=true, help='Debug mode')
+define('policy', default='autoadd',
        help='Missing host key policy, reject|autoadd|warning')
 define('hostfile', default='', help='User defined host keys file')
 define('syshostfile', default='', help='System wide host keys file')
 define('tdstream', default='', help='Trusted downstream, separated by comma')
 define('redirect', type=bool, default=True, help='Redirecting http to https')
-define('fbidhttp', type=bool, default=True,
+define('fbidhttp', type=bool, default=False,
        help='Forbid public plain http incoming requests')
 define('xheaders', type=bool, default=True, help='Support xheaders')
 define('xsrf', type=bool, default=True, help='CSRF protection')
@@ -41,7 +41,7 @@ define('origin', default='same', help='''Origin policy,
 separated by comma;
 '*': wildcard policy, matches any domain, allowed in debug mode only.''')
 define('wpintvl', type=int, default=0, help='Websocket ping interval')
-define('maxconn', type=int, default=20,
+define('maxconn', type=int, default=30,
        help='Maximum live connections (ssh sessions) per client')
 define('version', type=bool, help='Show version information',
        callback=print_version)
