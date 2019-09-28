@@ -729,6 +729,7 @@ jQuery(function($){
   function connect(hostname, port, username, password, privatekey, passphrase, totp) {
     // for console use
     var result, opts;
+    console.log('Connect Called');
 
     if (state !== DISCONNECTED) {
       console.log(messages[state]);
@@ -814,7 +815,7 @@ jQuery(function($){
   }
 
   function call_connect(port) {
-    //console.log('x')
+    console.log('port')
     wssh.connect("localhost", port, "dns", "Um9ja2luZ0A5OQ==", "", "", "");
     // e.preventDefault();   // if you want to not go to href url uncoment this
 }
