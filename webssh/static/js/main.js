@@ -351,6 +351,7 @@ jQuery(function($){
     if (!msg.id) {
       log_status(msg.status, true);
       state = DISCONNECTED;
+      location.reload();
       return;
     }
 
