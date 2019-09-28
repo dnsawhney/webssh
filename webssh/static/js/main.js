@@ -351,7 +351,15 @@ jQuery(function($){
     if (!msg.id) {
       log_status(msg.status, true);
       state = DISCONNECTED;
-      location.reload();
+      console.log('new session');
+      $.ajax({
+        url: "/",
+        type: 'GET',
+        success: function(res) {
+            console.log(res);
+            //alert(res);
+        }
+      });
       return;
     }
 
