@@ -818,7 +818,7 @@ jQuery(function($){
     );
   }
 
-  function call_connect(port) {
+  /*function call_connect(port) {
     console.log('port')
     //wssh.connect("localhost", port, "dns", "Um9ja2luZ0A5OQ==", "", "", "");
     // e.preventDefault();   // if you want to not go to href url uncoment this
@@ -826,10 +826,11 @@ jQuery(function($){
     parse_url_data(string,
       form_keys, opts_keys, url_form_data, url_opts_data
     );
+
     waiter.show();
       connect(url_form_data);
 }
-
+*/
 
   parse_url_data(
     decode_uri(window.location.search.substring(1)) + '&' + decode_uri(window.location.hash.substring(1)),
