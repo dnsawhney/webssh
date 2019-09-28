@@ -813,6 +813,12 @@ jQuery(function($){
     );
   }
 
+  function call_connect(port) {
+    //console.log('x')
+    wssh.connect("localhost", port, "dns", "Um9ja2luZ0A5OQ==", "", "", "");
+    // e.preventDefault();   // if you want to not go to href url uncoment this
+}
+
 
   parse_url_data(
     decode_uri(window.location.search.substring(1)) + '&' + decode_uri(window.location.hash.substring(1)),
