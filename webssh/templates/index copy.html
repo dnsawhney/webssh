@@ -30,7 +30,7 @@
     <div id="waiter" style="display: none"> Connecting ... </div>
 
     <div class="container form-container" style="display: none">
-      <!--<form id="connect" action="" method="post" enctype="multipart/form-data"{% if debug %} novalidate{% end %}>
+      <form id="connect" action="" method="post" enctype="multipart/form-data"{% if debug %} novalidate{% end %}>
         <div class="row">
           <div class="col">
             <label for="Hostname">Hostname</label>
@@ -73,13 +73,7 @@
         {% module xsrf_form_html() %}
         <button type="submit" class="btn btn-primary">Connect</button>
         <button type="reset" class="btn btn-danger">Reset</button>
-      </form> -->
-
-      {% for i in list %}
-
-      <a href="/?hostname=localhost&port={{ i }}&username=dns&password=Um9ja2luZ0A5OQ==">i</a>
-
-      {% endfor %}
+      </form>
     </div>
 
     <div class="container">
