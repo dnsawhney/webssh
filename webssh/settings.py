@@ -26,7 +26,6 @@ define('keyfile', default='', help='SSL private key file')
 define('debug', type=bool, default=True, help='Debug mode')
 define('cookie_secret', default='bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=', help='Debug mode')
 define('login_url', default='/login', help='SSL private key file')
-define('keyfile', default='', help='SSL private key file')
 define('policy', default='autoadd',
        help='Missing host key policy, reject|autoadd|warning')
 define('hostfile', default='', help='User defined host keys file')
