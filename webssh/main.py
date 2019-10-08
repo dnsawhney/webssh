@@ -18,8 +18,10 @@ def make_handlers(loop, options):
     handlers = [
         (r'/', IndexHandler, dict(loop=loop, policy=policy,
                                   host_keys_settings=host_keys_settings)),
-        (r'/login', LoginHandler),
-        (r'/logout', LogoutHandler),
+        (r'/login', LoginHandler, dict(loop=loop, policy=policy,
+                                  host_keys_settings=host_keys_settings)),
+        (r'/logout', LogoutHandler, dict(loop=loop, policy=policy,
+                                  host_keys_settings=host_keys_settings)),
         (r'/ws', WsockHandler, dict(loop=loop))
     ]
     return handlers
