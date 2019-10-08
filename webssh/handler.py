@@ -455,7 +455,7 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
             s.close()
             port += 1
         return list_ports
-        
+
     @tornado.web.authenticated
     def get(self):
         lists= self.list_listen_ports()
@@ -559,7 +559,7 @@ class WsockHandler(MixinHandler, tornado.websocket.WebSocketHandler):
         if worker:
             worker.close(reason=self.close_reason)
 
-class LoginHandler(BaseHandler):
+class LoginHandler(IndexHandler):
     @tornado.gen.coroutine
     def get(self):
         incorrect = self.get_secure_cookie("incorrect")
@@ -591,7 +591,7 @@ class LoginHandler(BaseHandler):
                           </center>""" % increased)
 
 
-class LogoutHandler(BaseHandler):
+class LogoutHandler(IndexHandler):
     def get(self):
         self.clear_cookie("user")
         self.redirect(self.get_argument("next", self.reverse_url("main")))
