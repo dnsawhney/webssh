@@ -297,6 +297,9 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
 
     executor = ThreadPoolExecutor(max_workers=cpu_count()*5)
 
+    def get_current_user(self):
+        return self.get_secure_cookie("user")
+
     def initialize(self, loop, policy, host_keys_settings):
         super(IndexHandler, self).initialize(loop)
         self.policy = policy
@@ -452,7 +455,8 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
             s.close()
             port += 1
         return list_ports
-
+        
+    @tornado.web.authenticated
     def get(self):
         lists= self.list_listen_ports()
         self.render('index.html', debug=self.debug, list=lists)
@@ -554,3 +558,40 @@ class WsockHandler(MixinHandler, tornado.websocket.WebSocketHandler):
         worker = self.worker_ref() if self.worker_ref else None
         if worker:
             worker.close(reason=self.close_reason)
+
+class LoginHandler(BaseHandler):
+    @tornado.gen.coroutine
+    def get(self):
+        incorrect = self.get_secure_cookie("incorrect")
+        if incorrect and int(incorrect) > 20:
+            self.write('<center>blocked</center>')
+            return
+        self.render('login.html')
+
+    @tornado.gen.coroutine
+    def post(self):
+        incorrect = self.get_secure_cookie("incorrect")
+        if incorrect and int(incorrect) > 20:
+            self.write('<center>blocked</center>')
+            return
+        
+        getusername = tornado.escape.xhtml_escape(self.get_argument("username"))
+        getpassword = tornado.escape.xhtml_escape(self.get_argument("password"))
+        if "demo" == getusername and "demo" == getpassword:
+            self.set_secure_cookie("user", self.get_argument("username"))
+            self.set_secure_cookie("incorrect", "0")
+            self.redirect(self.reverse_url("main"))
+        else:
+            incorrect = self.get_secure_cookie("incorrect") or 0
+            increased = str(int(incorrect)+1)
+            self.set_secure_cookie("incorrect", increased)
+            self.write("""<center>
+                            Something Wrong With Your Data (%s)<br />
+                            <a href="/">Go Home</a>
+                          </center>""" % increased)
+
+
+class LogoutHandler(BaseHandler):
+    def get(self):
+        self.clear_cookie("user")
+        self.redirect(self.get_argument("next", self.reverse_url("main")))
