@@ -580,7 +580,7 @@ class LoginHandler(IndexHandler):
         if "demo" == getusername and "demo" == getpassword:
             self.set_secure_cookie("user", self.get_argument("username"))
             self.set_secure_cookie("incorrect", "0")
-            self.redirect(self.reverse_url("main"))
+            self.redirect(self.reverse_url("/"))
         else:
             incorrect = self.get_secure_cookie("incorrect") or 0
             increased = str(int(incorrect)+1)
@@ -594,4 +594,4 @@ class LoginHandler(IndexHandler):
 class LogoutHandler(IndexHandler):
     def get(self):
         self.clear_cookie("user")
-        self.redirect(self.get_argument("next", self.reverse_url("main")))
+        self.redirect(self.get_argument("next", self.reverse_url("/")))
