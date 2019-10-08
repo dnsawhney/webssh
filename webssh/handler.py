@@ -443,7 +443,7 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
     def list_listen_ports(self):
         list_ports = []
         port = 9000
-        while ((port >8999) & (port <= 65535)):
+        while ((port >8999) & (port <= 9999)):
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             result = s.connect_ex(('127.0.0.1', port))
             if result == 0:
