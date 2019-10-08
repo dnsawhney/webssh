@@ -60,7 +60,9 @@ def get_app_settings(options):
         websocket_ping_interval=options.wpintvl,
         debug=options.debug,
         xsrf_cookies=options.xsrf,
-        origin_policy=get_origin_setting(options)
+        origin_policy=get_origin_setting(options),
+        cookie_secret=options.cookie_secret,
+        login_url=options.login_url
     )
     return settings
 
