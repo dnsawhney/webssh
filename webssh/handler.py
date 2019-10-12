@@ -450,7 +450,6 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             result = s.connect_ex(('127.0.0.1', port))
             if result == 0:
-                print('socket is open')
                 list_ports.append(port)
             s.close()
             port += 1
